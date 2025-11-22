@@ -1,0 +1,52 @@
+syntax="proto3";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.populate_all) = true;
+option go_package = "model";
+
+// Task
+message Task {
+  // id
+  int64 id = 1 [(gogoproto.moretags) = "gorm:\"index:,priority:3,composite:idx_tasks_status_deleted_at_id;primaryKey;autoIncrement;comment:id\""];
+  // task id
+  string task_id = 3 [(gogoproto.moretags) = "gorm:\"unique;size:128;comment:task id\""];
+  // task pid
+  string task_pid = 4 [(gogoproto.moretags) = "gorm:\"index;size:128;comment:task pid\""];
+  // other id
+  string other_id = 5 [(gogoproto.moretags) = "gorm:\"index;size:255;comment:other id\""];
+  // cover
+  string cover = 6 [(gogoproto.moretags) = "gorm:\"comment:cover\""];
+  // task name
+  string task_name = 7 [(gogoproto.moretags) = "gorm:\"size:255;comment:task name\""];
+  // other type
+  int32 other_type = 9 [(gogoproto.moretags) = "gorm:\"index;size:20;comment:other type\""];
+  // other tag
+  int32 other_tag = 10 [(gogoproto.moretags) = "gorm:\"index;size:20;comment:other tag\""];
+  // other form
+  int32 other_form = 11 [(gogoproto.moretags) = "gorm:\"index;size:20;comment:other form\""];
+  // other group
+  int32 other_group = 12 [(gogoproto.moretags) = "gorm:\"index;size:20;comment:other group\""];
+  // task type
+  string task_type = 13 [(gogoproto.moretags) = "gorm:\"index;size:50;comment:task type\""];
+  // ciphertext
+  string ciphertext = 14 [(gogoproto.moretags) = "gorm:\"comment:ciphertext\""];
+  // rewrite_hls
+  bytes rewrite_hls = 15 [(gogoproto.moretags) = "gorm:\"comment:rewrite hls\""];
+  // bstatus
+  int32 bstatus= 16 [(gogoproto.moretags) = "gorm:\"index;size:4;comment:business status\""];
+  // raw
+  bytes raw = 21[(gogoproto.moretags) = "gorm:\"comment:raw\""];
+  // message
+  bytes message = 22 [(gogoproto.moretags) = "gorm:\"comment:message\""];
+  // message
+  bytes statistics = 23 [(gogoproto.moretags) = "gorm:\"comment:statistics\""];
+  // status
+  int32 status = 24 [(gogoproto.moretags) = "gorm:\"index:,priority:1,composite:idx_tasks_status_deleted_at_id;default:1;size:2;comment:status 1 normal\""];
+  // created_at
+  int64 created_at = 25 [(gogoproto.moretags) = "gorm:\"index;comment:created at\""];
+  // updated_at
+  int64 updated_at = 26 [(gogoproto.moretags) = "gorm:\"index;comment:updated at\""];
+  // deleted_at
+  int64 deleted_at = 27 [(gogoproto.moretags) = "gorm:\"index:,priority:2,composite:idx_tasks_status_deleted_at_id;comment:deleted at\""];
+}

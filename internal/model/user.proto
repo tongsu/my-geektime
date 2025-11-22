@@ -1,0 +1,36 @@
+syntax="proto3";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.populate_all) = true;
+option go_package = "model";
+
+// User
+message User {
+  // id
+  int64 id = 1 [(gogoproto.moretags) = "gorm:\"primaryKey;autoIncrement;comment:id\""];
+  // uid
+  string uid = 2 [(gogoproto.moretags) = "gorm:\"unique;size:128;comment:uid\""];
+  // email
+  string email = 3 [(gogoproto.moretags) = "gorm:\"index;size:20;comment:email\""];
+  // user_name
+  string user_name = 4 [(gogoproto.moretags) = "gorm:\"index;size:255;comment:user name\""];
+  // nick_name
+  string nick_name = 5 [(gogoproto.moretags) = "gorm:\"size:255;comment:nick name\""];
+  // password
+  string password = 6 [(gogoproto.moretags) = "gorm:\"size:128;comment:password\""];
+  // avatar
+  string avatar = 7 [(gogoproto.moretags) = "gorm:\"size:255;comment:avatar\""];
+  // access_token
+  string access_token = 8 [(gogoproto.moretags) = "gorm:\"comment:access_token\""];
+  // role_id
+  int32 role_id = 9 [(gogoproto.moretags) = "gorm:\"default:2;size:2;comment:role_id\""];
+  // status
+  int32 status = 19 [(gogoproto.moretags) = "gorm:\"default:1;size:2;comment:status 1 normal\""];
+  // created_at
+  int64 created_at = 20 [(gogoproto.moretags) = "gorm:\"comment:created at\""];
+  // updated_at
+  int64 updated_at = 21 [(gogoproto.moretags) = "gorm:\"comment:updated at\""];
+  // deleted_at
+  int64 deleted_at = 22 [(gogoproto.moretags) = "gorm:\"comment:deleted at\""];
+}
